@@ -171,7 +171,8 @@ fn append_encode_only_args(arg_str: &mut String, bitrate: u32, encoder: &String,
 }
 
 fn append_vmaf_only_args(arg_str: &mut String) {
-    arg_str.push_str(format!(" -filter_complex libvmaf='n_threads={}:n_subsample=5'", num_cpus::get()).as_str());
+    // arg_str.push_str(format!(" -filter_complex libvmaf='n_threads={}:n_subsample=5'", num_cpus::get()).as_str());
+    arg_str.push_str(" -filter_complex libvmaf='n_threads=1:n_subsample=5");
 }
 
 // TODO: get rid of this later

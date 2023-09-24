@@ -33,7 +33,7 @@ impl Nvenc {
     }
 
     pub fn get_benchmark_settings(&self) -> String {
-        return format!("-preset p1 -tune ll -profile:v {} -rc cbr -cbr true -gpu {}", self.profiles.get(0).unwrap(), self.gpu);
+        return format!("-preset p1 -tune ll -profile:v {} -rc cbr -cbr true -gpu {} -b_ref_mode 0", self.profiles.get(0).unwrap(), self.gpu);
     }
 
     fn has_next(&self) -> bool {
@@ -73,6 +73,7 @@ impl NvencSettings {
         args.push_str(" -cbr true");
         args.push_str(" -gpu ");
         args.push_str(self.gpu.to_string().as_str());
+        args.push_str(" -b_ref_mode 0");
 
         return args;
     }
